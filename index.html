@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="meta.titulo">Hermes</title>
+<meta name="description" data-t-attr="content:meta.descripcion" content="">
+<link rel="icon" href="assets/hermes-icon.webp" type="image/webp">
+<link rel="stylesheet" href="estilo.css">
+
+<!-- Los idiomas. Añadir uno = copiar un fichero, traducirlo, y añadir una línea aquí y otra
+     en la lista IDIOMAS de hermes.js. El marcado de esta página no se toca. -->
+<script src="i18n/es.js"></script>
+<script src="i18n/en.js"></script>
+</head>
+
+<body>
+
+<!-- ============================ BARRA ============================ -->
+<header class="barra">
+  <a class="barra-marca" href="#inicio">
+    <img src="assets/hermes-icon.webp" alt="" width="28" height="24">
+    <span>Hermes</span>
+  </a>
+
+  <nav class="barra-nav">
+    <a href="#que-es"   data-t="nav.quees">Qué es</a>
+    <a href="#galeria"  data-t="nav.galeria">Galería</a>
+    <a href="#descarga" data-t="nav.descarga">Descarga</a>
+    <a href="#saber"    data-t="nav.saber">Antes de instalar</a>
+  </nav>
+
+  <div class="barra-idioma" id="selectorIdioma" role="group"
+       data-t-attr="aria-label:nav.idioma"></div>
+</header>
+
+<main>
+
+<!-- ============================ 1. INICIO ============================ -->
+<section id="inicio" class="hero">
+  <div class="hero-brillo" aria-hidden="true"></div>
+
+  <img class="hero-img" src="assets/hermes-hero.webp"
+       data-t-attr="alt:hero.alt" alt="" width="1100" height="1100" fetchpriority="high">
+
+  <h1 class="hero-titulo">Hermes</h1>
+  <p class="hero-claim" data-t="hero.claim">La LAN party no murió. Solo le faltaba una app.</p>
+  <p class="hero-sub"   data-t="hero.sub"></p>
+
+  <a class="boton boton-grande" href="#descarga">
+    <span data-t="hero.boton">Descargar para Windows</span>
+  </a>
+  <p class="hero-pie" data-t="hero.pie"></p>
+
+  <a class="hero-bajar" href="#que-es" data-t-attr="aria-label:hero.bajar" aria-label="">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</section>
+
+<!-- ============================ 2. QUÉ ES ============================ -->
+<section id="que-es" class="seccion">
+  <h2 data-t="quees.titulo">¿Qué es Hermes?</h2>
+
+  <div class="prosa">
+    <p data-t="quees.p1"></p>
+    <p class="prosa-remate" data-t="quees.p2"></p>
+  </div>
+
+  <ul class="rejilla">
+    <li class="pieza"><h3 data-t="quees.red.t"></h3>      <p data-t="quees.red.d"></p></li>
+    <li class="pieza"><h3 data-t="quees.voz.t"></h3>      <p data-t="quees.voz.d"></p></li>
+    <li class="pieza"><h3 data-t="quees.pantalla.t"></h3> <p data-t="quees.pantalla.d"></p></li>
+    <li class="pieza"><h3 data-t="quees.camara.t"></h3>   <p data-t="quees.camara.d"></p></li>
+    <li class="pieza pieza-estrella"><h3 data-t="quees.mando.t"></h3><p data-t="quees.mando.d"></p></li>
+    <li class="pieza"><h3 data-t="quees.archivos.t"></h3> <p data-t="quees.archivos.d"></p></li>
+    <li class="pieza"><h3 data-t="quees.juegos.t"></h3>   <p data-t="quees.juegos.d"></p></li>
+    <li class="pieza"><h3 data-t="quees.grupo.t"></h3>    <p data-t="quees.grupo.d"></p></li>
+  </ul>
+</section>
+
+<!-- ============================ 3. GALERÍA ============================ -->
+<section id="galeria" class="seccion">
+  <h2 data-t="galeria.titulo">Cómo se ve</h2>
+  <p class="seccion-sub" data-t="galeria.sub"></p>
+
+  <!-- LAS DOS DEL MANDO VAN JUNTAS Y EN ESTE ORDEN: primero el panel de Hermes ("esto es lo que
+       ves") y luego el juego ("así estáis jugando los dos"). Es la función que no existe en otras
+       aplicaciones, así que va destacada y con su propia explicación, no con un pie de foto. -->
+  <article class="mando">
+    <span class="mando-etiqueta" data-t="gal.mando.etiqueta"></span>
+    <h3 data-t="gal.mando.t"></h3>
+    <div class="prosa">
+      <p data-t="gal.mando.p1"></p>
+      <p data-t="gal.mando.p2"></p>
+    </div>
+
+    <div class="mando-par">
+      <figure class="tarjeta">
+        <button class="lupa" data-abre="comparte_mando0" data-pie="gal.mando.a">
+          <img src="assets/comparte_mando0.webp" alt="" loading="lazy" width="1400" height="751">
+        </button>
+        <figcaption><span class="paso">1</span><span data-t="gal.mando.a"></span></figcaption>
+      </figure>
+      <figure class="tarjeta">
+        <button class="lupa" data-abre="comparte_mando" data-pie="gal.mando.b">
+          <img src="assets/comparte_mando.webp" alt="" loading="lazy" width="1400" height="788">
+        </button>
+        <figcaption><span class="paso">2</span><span data-t="gal.mando.b"></span></figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- Las otras ocho. -->
+  <div class="galeria">
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="antesala" data-pie="gal.antesala.d">
+        <img src="assets/antesala.webp" alt="" loading="lazy" width="1400" height="751">
+      </button>
+      <figcaption><h3 data-t="gal.antesala.t"></h3><p data-t="gal.antesala.d"></p></figcaption>
+    </figure>
+
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="sala" data-pie="gal.sala.d">
+        <img src="assets/sala.webp" alt="" loading="lazy" width="1400" height="754">
+      </button>
+      <figcaption><h3 data-t="gal.sala.t"></h3><p data-t="gal.sala.d"></p></figcaption>
+    </figure>
+
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="grupo" data-pie="gal.grupo.d">
+        <img src="assets/grupo.webp" alt="" loading="lazy" width="1400" height="750">
+      </button>
+      <figcaption><h3 data-t="gal.grupo.t"></h3><p data-t="gal.grupo.d"></p></figcaption>
+    </figure>
+
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="juegos" data-pie="gal.juegos.d">
+        <img src="assets/juegos.webp" alt="" loading="lazy" width="1400" height="750">
+      </button>
+      <figcaption><h3 data-t="gal.juegos.t"></h3><p data-t="gal.juegos.d"></p></figcaption>
+    </figure>
+
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="grupo_pizarra" data-pie="gal.pizarra.d">
+        <img src="assets/grupo_pizarra.webp" alt="" loading="lazy" width="1400" height="747">
+      </button>
+      <figcaption><h3 data-t="gal.pizarra.t"></h3><p data-t="gal.pizarra.d"></p></figcaption>
+    </figure>
+
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="poker" data-pie="gal.poker.d">
+        <img src="assets/poker.webp" alt="" loading="lazy" width="1400" height="751">
+      </button>
+      <figcaption><h3 data-t="gal.poker.t"></h3><p data-t="gal.poker.d"></p></figcaption>
+    </figure>
+
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="golazo" data-pie="gal.golazo.d">
+        <img src="assets/golazo.webp" alt="" loading="lazy" width="1400" height="749">
+      </button>
+      <figcaption><h3 data-t="gal.golazo.t"></h3><p data-t="gal.golazo.d"></p></figcaption>
+    </figure>
+
+    <figure class="tarjeta">
+      <button class="lupa" data-abre="olimpia" data-pie="gal.olimpia.d">
+        <img src="assets/olimpia.webp" alt="" loading="lazy" width="1400" height="750">
+      </button>
+      <figcaption><h3 data-t="gal.olimpia.t"></h3><p data-t="gal.olimpia.d"></p></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ 4. DESCARGA ============================ -->
+<section id="descarga" class="seccion seccion-descarga">
+  <h2 data-t="descarga.titulo">Descargar Hermes</h2>
+  <div class="prosa">
+    <p data-t="descarga.p"></p>
+  </div>
+
+  <a class="boton boton-grande boton-descarga"
+     href="https://github.com/Deivincci/Hermes/releases/latest" rel="noopener">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 19h16" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span data-t="descarga.boton">Ir a las descargas</span>
+  </a>
+
+  <p class="descarga-fichero" data-t-html="descarga.fichero"></p>
+  <p class="descarga-aviso"><a href="#saber" data-t="descarga.aviso"></a></p>
+  <p class="descarga-nota" data-t="descarga.actualiza"></p>
+</section>
+
+<!-- ============================ 5. ANTES DE INSTALAR ============================ -->
+<section id="saber" class="seccion">
+  <h2 data-t="saber.titulo">Antes de instalar</h2>
+  <p class="seccion-sub" data-t="saber.sub"></p>
+
+  <div class="avisos">
+    <article class="aviso">
+      <h3 data-t="saber.smart.t"></h3>
+      <p data-t="saber.smart.p1"></p>
+      <p data-t="saber.smart.p2"></p>
+      <p class="aviso-como" data-t-html="saber.smart.p3"></p>
+      <p data-t-html="saber.smart.p4"></p>
+    </article>
+
+    <article class="aviso">
+      <h3 data-t="saber.drivers.t"></h3>
+      <p data-t="saber.drivers.p1"></p>
+      <ul class="aviso-lista">
+        <li data-t-html="saber.drivers.tap"></li>
+        <li data-t-html="saber.drivers.vigem"></li>
+      </ul>
+      <p data-t="saber.drivers.p2"></p>
+    </article>
+
+    <article class="aviso">
+      <h3 data-t="saber.privacidad.t"></h3>
+      <p data-t-html="saber.privacidad.p1"></p>
+      <p data-t-html="saber.privacidad.p2"></p>
+      <p data-t="saber.privacidad.p3"></p>
+    </article>
+
+    <article class="aviso">
+      <h3 data-t="saber.beta.t"></h3>
+      <p data-t="saber.beta.p1"></p>
+      <p data-t-html="saber.beta.p2"></p>
+      <p data-t="saber.beta.p3"></p>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ PIE ============================ -->
+<footer class="pie">
+  <img src="assets/hermes-emblema.webp" alt="" width="72" height="72" loading="lazy">
+  <p data-t="pie.hecho"></p>
+  <p class="pie-repo" data-t="pie.repo"></p>
+  <p class="pie-enlaces">
+    <a href="https://github.com/Deivincci/Hermes/releases" rel="noopener" data-t="pie.releases"></a>
+    <span aria-hidden="true">·</span>
+    <a href="#inicio" data-t="pie.arriba"></a>
+  </p>
+</footer>
+
+<!-- ============================ VISOR ============================ -->
+<div class="visor" id="visor" hidden>
+  <button class="visor-cerrar" id="visorCerrar" data-t-attr="aria-label:visor.cerrar" aria-label="">&times;</button>
+  <button class="visor-flecha visor-antes" id="visorAntes" data-t-attr="aria-label:visor.anterior" aria-label="">&#8249;</button>
+  <button class="visor-flecha visor-luego" id="visorLuego" data-t-attr="aria-label:visor.siguiente" aria-label="">&#8250;</button>
+  <figure class="visor-caja">
+    <img id="visorImg" src="" alt="">
+    <figcaption id="visorPie"></figcaption>
+  </figure>
+</div>
+
+<script src="hermes.js"></script>
+</body>
+</html>

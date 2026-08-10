@@ -1,0 +1,398 @@
+/* Hermes — la página. CSS a pelo, sin framework.
+   =============================================================================
+   La paleta NO se ha inventado aquí: son los mismos tokens de la aplicación
+   (gui/frontend/dist/app.css), para que quien llegue de la web a Hermes vea la
+   misma casa. Navy tinta de fondo, teal Egeo para lo que se pincha, bronce solo
+   para la marca.
+   ============================================================================= */
+
+:root {
+  /* Superficies */
+  --bg:     #0E1622;
+  --bar:    #0B111C;
+  --card:   #18222F;
+  --raised: #131C29;
+  --hover:  #1E2A3D;
+
+  /* Texto y líneas */
+  --fg:    #E8EDF6;
+  --muted: #A3B1C6;
+  --line:  #273347;
+
+  /* Acento e insignia */
+  --accent:      #3FB4C7;
+  --accent-deep: #2C93A6;
+  --accent-soft: rgba(63, 180, 199, 0.14);
+  --accent-line: rgba(63, 180, 199, 0.45);
+  --on-accent:   #062A33;
+  --brand:       #C99B57;
+  --wait:        #d8a44a;
+
+  --ancho: 1120px;
+  --radio: 14px;
+  --sombra: 0 10px 30px rgba(0, 0, 0, .45);
+
+  --fuente: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+/* Las anclas quedan por debajo de la barra si no se aparta el destino. */
+section { scroll-margin-top: 76px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--fuente);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body.con-visor { overflow: hidden; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--accent); }
+
+h1, h2, h3 { line-height: 1.2; margin: 0; }
+
+/* Foco visible en todo lo que se pincha o se tabula: la página se puede recorrer
+   entera con el teclado, y si no se ve dónde estás, no se puede. */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============================ BARRA ============================ */
+.barra {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; gap: 24px;
+  padding: 10px max(20px, calc((100% - var(--ancho)) / 2));
+  background: rgba(11, 17, 28, .72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: background .2s, border-color .2s;
+}
+.barra-pegada {
+  background: rgba(11, 17, 28, .94);
+  border-bottom-color: var(--line);
+}
+.barra-marca {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 19px; letter-spacing: .3px;
+  color: var(--brand); text-decoration: none;
+  margin-right: auto;
+}
+.barra-marca img { border-radius: 6px; }
+
+.barra-nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.barra-nav a {
+  color: var(--muted); text-decoration: none; font-size: 15px;
+  padding: 4px 0; border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.barra-nav a:hover { color: var(--fg); }
+.barra-nav a.es-la-actual { color: var(--fg); border-bottom-color: var(--accent); }
+
+.barra-idioma { display: flex; gap: 4px; }
+.barra-idioma button {
+  font: inherit; font-size: 13px; font-weight: 700; letter-spacing: .5px;
+  padding: 5px 10px; cursor: pointer;
+  color: var(--muted); background: transparent;
+  border: 1px solid var(--line); border-radius: 8px;
+  transition: all .15s;
+}
+.barra-idioma button:hover { color: var(--fg); border-color: var(--accent-line); }
+.barra-idioma button.es-el-activo {
+  color: var(--on-accent); background: var(--accent); border-color: var(--accent);
+}
+
+/* ============================ BOTONES ============================ */
+.boton {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 30px;
+  font-size: 17px; font-weight: 700; text-decoration: none;
+  color: var(--on-accent);
+  background: linear-gradient(180deg, var(--accent), var(--accent-deep));
+  border: none; border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(63, 180, 199, .28);
+  transition: transform .15s, box-shadow .15s;
+}
+.boton:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(63, 180, 199, .38); }
+.boton-grande { padding: 16px 38px; font-size: 18px; }
+
+/* ============================ 1. INICIO ============================ */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 58px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 40px 20px 90px;
+  overflow: hidden;
+}
+/* El halo de detrás del emblema. Decorativo y nada más: aria-hidden en el HTML. */
+.hero-brillo {
+  position: absolute; top: 8%; left: 50%; transform: translateX(-50%);
+  width: min(900px, 120vw); aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(201, 155, 87, .17) 0%, rgba(63, 180, 199, .08) 42%, transparent 68%);
+  pointer-events: none;
+}
+.hero-img {
+  position: relative;
+  width: min(340px, 62vw); height: auto;
+  filter: drop-shadow(0 14px 40px rgba(0, 0, 0, .55));
+  margin-bottom: 18px;
+}
+.hero-titulo {
+  position: relative;
+  font-size: clamp(52px, 11vw, 96px);
+  font-weight: 800; letter-spacing: 4px;
+  background: linear-gradient(180deg, #F0D9A8, var(--brand) 55%, #9A7136);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  margin-bottom: 6px;
+}
+.hero-claim {
+  position: relative;
+  font-size: clamp(20px, 3.2vw, 27px); font-weight: 600;
+  margin: 0 0 14px; max-width: 20ch;
+}
+.hero-sub {
+  position: relative;
+  color: var(--muted); max-width: 54ch; margin: 0 0 32px;
+}
+.hero-pie { color: var(--muted); font-size: 14px; margin-top: 16px; }
+
+.hero-bajar {
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+  color: var(--muted); opacity: .7;
+  animation: respira 2.4s ease-in-out infinite;
+}
+@keyframes respira {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 7px); }
+}
+
+/* ============================ SECCIONES ============================ */
+.seccion {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 84px 20px;
+  border-top: 1px solid var(--line);
+}
+.seccion h2 {
+  font-size: clamp(28px, 4.5vw, 40px);
+  text-align: center;
+  margin-bottom: 14px;
+}
+.seccion-sub {
+  text-align: center; color: var(--muted);
+  margin: 0 auto 44px; max-width: 60ch;
+}
+
+.prosa { max-width: 68ch; margin: 0 auto 42px; }
+.prosa p { margin: 0 0 18px; }
+.prosa-remate { font-size: 19px; color: var(--fg); font-weight: 600; }
+
+/* ---- Las piezas de "qué es" ---- */
+.rejilla {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+}
+.pieza {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radio);
+  padding: 22px;
+  transition: border-color .18s, transform .18s;
+}
+.pieza:hover { border-color: var(--accent-line); transform: translateY(-3px); }
+.pieza h3 { font-size: 17px; margin-bottom: 8px; }
+.pieza p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+/* Compartir mando destaca porque es lo que no tiene nadie más. */
+.pieza-estrella { border-color: rgba(201, 155, 87, .45); background: var(--raised); }
+.pieza-estrella h3 { color: var(--brand); }
+
+/* ============================ 3. GALERÍA ============================ */
+.tarjeta {
+  margin: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: border-color .18s, transform .18s, box-shadow .18s;
+}
+.tarjeta:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-3px);
+  box-shadow: var(--sombra);
+}
+/* El botón que envuelve la imagen: existe para que la captura se pueda abrir con
+   el teclado además de con el ratón. No debe parecer un botón. */
+.lupa {
+  display: block; width: 100%; padding: 0; margin: 0;
+  background: #0a1017; border: 0; cursor: zoom-in;
+}
+.lupa img { width: 100%; }
+
+.tarjeta figcaption { padding: 18px 20px 22px; }
+.tarjeta figcaption h3 { font-size: 17px; margin-bottom: 7px; }
+.tarjeta figcaption p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+.galeria {
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+}
+
+/* ---- El bloque destacado de compartir mando ---- */
+.mando {
+  position: relative;
+  background: var(--raised);
+  border: 1px solid rgba(201, 155, 87, .38);
+  border-radius: 18px;
+  padding: 34px 28px 30px;
+  margin-bottom: 40px;
+}
+.mando-etiqueta {
+  display: inline-block;
+  font-size: 12px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--brand);
+  background: rgba(201, 155, 87, .12);
+  border: 1px solid rgba(201, 155, 87, .38);
+  border-radius: 999px;
+  padding: 4px 13px; margin-bottom: 14px;
+}
+.mando h3 { font-size: clamp(21px, 3vw, 27px); margin-bottom: 20px; }
+.mando .prosa { margin-left: 0; margin-bottom: 30px; }
+
+/* Las dos capturas, en este orden y a la misma altura: son una secuencia. */
+.mando-par {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+.mando-par figcaption {
+  display: flex; gap: 12px; align-items: flex-start;
+  color: var(--muted); font-size: 15px; line-height: 1.55;
+}
+.paso {
+  flex: 0 0 auto;
+  width: 25px; height: 25px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 800;
+  color: var(--on-accent); background: var(--accent);
+}
+
+/* ============================ 4. DESCARGA ============================ */
+.seccion-descarga { text-align: center; }
+.seccion-descarga .prosa { margin-bottom: 30px; }
+.boton-descarga { margin-bottom: 22px; }
+
+.descarga-fichero { color: var(--muted); font-size: 15px; margin: 0 0 26px; }
+.descarga-fichero b {
+  color: var(--fg); font-family: Consolas, "Courier New", monospace; font-weight: 600;
+  background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+  padding: 2px 7px;
+}
+.descarga-aviso { margin: 0 0 14px; }
+.descarga-aviso a {
+  display: inline-block;
+  color: var(--wait); text-decoration: none; font-weight: 600;
+  border-bottom: 1px dashed rgba(216, 164, 74, .5);
+}
+.descarga-aviso a:hover { border-bottom-style: solid; }
+.descarga-nota { color: var(--muted); font-size: 15px; max-width: 58ch; margin: 0 auto; }
+
+/* ============================ 5. ANTES DE INSTALAR ============================ */
+.avisos { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(370px, 1fr)); }
+.aviso {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--wait);
+  border-radius: var(--radio);
+  padding: 26px 26px 22px;
+}
+.aviso h3 { font-size: 19px; margin-bottom: 14px; color: var(--fg); }
+.aviso p { margin: 0 0 13px; color: var(--muted); font-size: 15.5px; line-height: 1.62; }
+.aviso p:last-child { margin-bottom: 0; }
+.aviso b { color: var(--fg); font-weight: 600; }
+/* El "cómo seguir" es la frase que la gente viene a buscar: que se vea de un vistazo. */
+.aviso-como {
+  background: var(--raised);
+  border: 1px solid var(--accent-line);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--fg) !important;
+}
+.aviso-lista { margin: 0 0 13px; padding-left: 20px; }
+.aviso-lista li { color: var(--muted); font-size: 15.5px; line-height: 1.62; margin-bottom: 10px; }
+
+/* ============================ PIE ============================ */
+.pie {
+  text-align: center;
+  padding: 54px 20px 44px;
+  border-top: 1px solid var(--line);
+  background: var(--bar);
+  color: var(--muted);
+  font-size: 15px;
+}
+.pie img { margin: 0 auto 18px; opacity: .85; border-radius: 50%; }
+.pie p { margin: 0 0 8px; }
+.pie-repo { font-size: 14px; opacity: .8; }
+.pie-enlaces { margin-top: 18px; display: flex; gap: 12px; justify-content: center; }
+
+/* ============================ VISOR ============================ */
+.visor {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(6, 10, 16, .93);
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 64px;
+}
+.visor[hidden] { display: none; }
+.visor-caja { margin: 0; max-width: 1400px; width: 100%; }
+.visor-caja img {
+  width: 100%; max-height: 78vh; object-fit: contain;
+  border-radius: 10px; border: 1px solid var(--line);
+}
+.visor-caja figcaption {
+  color: var(--muted); font-size: 15px; text-align: center;
+  margin-top: 16px; max-width: 78ch; margin-inline: auto;
+}
+.visor-cerrar, .visor-flecha {
+  position: absolute;
+  background: rgba(24, 34, 47, .85);
+  color: var(--fg);
+  border: 1px solid var(--line); border-radius: 10px;
+  cursor: pointer; font-family: var(--fuente);
+  display: grid; place-items: center;
+  transition: background .15s, border-color .15s;
+}
+.visor-cerrar:hover, .visor-flecha:hover { background: var(--hover); border-color: var(--accent-line); }
+.visor-cerrar { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 27px; line-height: 1; }
+.visor-flecha { top: 50%; transform: translateY(-50%); width: 44px; height: 68px; font-size: 34px; line-height: 1; }
+.visor-antes { left: 12px; }
+.visor-luego { right: 12px; }
+
+/* ============================ PANTALLAS ESTRECHAS ============================ */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .barra { gap: 12px; padding: 9px 14px; flex-wrap: wrap; }
+  .barra-marca { font-size: 17px; }
+  .barra-nav { order: 3; width: 100%; gap: 16px; justify-content: center; font-size: 14px; }
+  .seccion { padding: 60px 16px; }
+  .hero { min-height: auto; padding: 50px 16px 70px; }
+  .hero-img { width: min(230px, 58vw); }
+  .mando { padding: 26px 18px 22px; }
+  .visor { padding: 60px 12px 20px; }
+  .visor-flecha { top: auto; bottom: 14px; transform: none; width: 54px; height: 44px; }
+  .visor-caja img { max-height: 62vh; }
+}
+
+/* Quien haya pedido menos movimiento en su sistema, que no lo tenga. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
