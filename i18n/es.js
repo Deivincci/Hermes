@@ -106,14 +106,25 @@ window.HERMES_TEXTOS.es = {
   "descarga.aviso": "Antes de instalar, lee lo de aquí abajo. Son cuatro cosas y ninguna es letra pequeña.",
   "descarga.actualiza": "Una vez instalado, Hermes te avisa cuando hay versión nueva y la instala si tú dices que sí. Nunca descarga ni instala nada por su cuenta.",
 
+  /* ---------- El QR ---------- */
+  "qr.titulo": "¿Se lo estás enseñando a alguien?",
+  "qr.p": "Que escanee este código con la cámara del móvil y le sale esta misma página. No hace falta pedirle el teléfono ni mandarle nada.",
+  "qr.ojo": "Lleva a la página, no al programa: Hermes es para Windows, así que desde el móvil lo que se hace es guardar la dirección para abrirla luego en el PC.",
+  "qr.alt": "Código QR con la dirección de la página de Hermes",
+
   /* ---------- 5. Antes de instalar ---------- */
   "saber.titulo": "Antes de instalar",
   "saber.sub": "Cuatro cosas que es mejor leer ahora que descubrir luego.",
 
-  "saber.smart.t": "Windows va a avisarte de que no reconoce la aplicación",
-  "saber.smart.p1": "Al abrir el instalador saldrá una pantalla azul de SmartScreen: «Windows protegió su PC» y «aplicación no reconocida».",
-  "saber.smart.p2": "Por qué: firmar una aplicación cuesta unos cuantos cientos de euros al año, y Hermes todavía no está firmado. Ese aviso no dice que el programa tenga nada malo; dice que Windows no reconoce quién lo firma. Y no lo firma nadie.",
+  "saber.smart.t": "Vas a ver dos avisos: al descargar y al abrir",
+  "saber.smart.p0": "Los dos salen por lo mismo y salen seguidos, con segundos de diferencia. Ninguno de los dos dice que el programa tenga nada malo.",
+  "saber.smart.h1": "1 · Al descargar, el navegador lo para",
+  "saber.smart.d1": "Nada más pulsar el botón, el navegador bloquea el fichero y te pide que confirmes que confías en él. Es lo que hacen Chrome y Edge con cualquier .exe que no venga firmado, por descargado que esté el sitio.",
+  "saber.smart.c1": "Cómo seguir: abre la lista de descargas del navegador, despliega el menú del fichero (los tres puntos) y elige <b>Conservar</b>.",
+  "saber.smart.h2": "2 · Al abrirlo, Windows lo para otra vez",
+  "saber.smart.p1": "Al ejecutar el instalador saldrá una pantalla azul de SmartScreen: «Windows protegió su PC» y «aplicación no reconocida».",
   "saber.smart.p3": "Cómo seguir: pincha en <b>Más información</b> y luego en <b>Ejecutar de todas formas</b>.",
+  "saber.smart.p2": "Por qué las dos veces: firmar una aplicación cuesta unos cuantos cientos de euros al año, y Hermes todavía no está firmado. Esos avisos no dicen que el programa sea peligroso; dicen que nadie ha puesto su nombre detrás. Y no hay manera de quitarlos: repartirlo en un .zip no ahorra el de Windows y encima los antivirus puntúan peor un .exe dentro de un zip. Lo único que los quita es firmar.",
   "saber.smart.p4": "Si prefieres comprobarlo por tu cuenta, cada versión publica junto al instalador un fichero <b>.sha256</b> con su huella, para que verifiques que lo que has bajado es lo que se publicó.",
 
   "saber.drivers.t": "Instala dos controladores, y se pueden quitar",

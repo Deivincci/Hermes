@@ -98,15 +98,26 @@ window.HERMES_TEXTOS.en = {
   "descarga.aviso": "Read the section below before you install. It's four things and none of them is fine print.",
   "descarga.actualiza": "Once installed, Hermes tells you when there's a new version and installs it if you say yes. It never downloads or installs anything on its own.",
 
+  /* ---------- The QR code ---------- */
+  "qr.titulo": "Showing it to someone in person?",
+  "qr.p": "Have them point their phone camera at this code and they land on this very page. No need to ask for their number or send them anything.",
+  "qr.ojo": "It leads to the page, not to the program: Hermes is for Windows, so from a phone this is about keeping the address to open later on a PC.",
+  "qr.alt": "QR code with the address of the Hermes website",
+
   /* ---------- 5. Before you install ---------- */
   "saber.titulo": "Before you install",
   "saber.sub": "Four things better read now than discovered later.",
 
-  "saber.smart.t": "Windows will warn you that it doesn't recognise the app",
-  "saber.smart.p1": "When you open the installer you'll get the blue SmartScreen page: \"Windows protected your PC\" and \"unrecognised app\".",
-  "saber.smart.p2": "Why: signing an application costs a few hundred euros a year, and Hermes isn't signed yet. That warning isn't saying the program is bad; it's saying Windows doesn't recognise who signed it. Nobody did.",
+  "saber.smart.t": "You'll see two warnings: one downloading, one opening",
+  "saber.smart.p0": "Both come from the same thing and they arrive back to back, seconds apart. Neither one is saying the program is harmful.",
+  "saber.smart.h1": "1 · Your browser stops the download",
+  "saber.smart.d1": "The moment you click the button, the browser blocks the file and asks you to confirm you trust it. Chrome and Edge do this with any unsigned .exe, no matter how well known the site is.",
+  "saber.smart.c1": "How to carry on: open the browser's downloads list, open the file's menu (the three dots) and choose <b>Keep</b>.",
+  "saber.smart.h2": "2 · Windows stops it again when you open it",
+  "saber.smart.p1": "When you run the installer you'll get the blue SmartScreen page: \"Windows protected your PC\" and \"unrecognised app\".",
   "saber.smart.p3": "How to carry on: click <b>More info</b> and then <b>Run anyway</b>.",
-  "saber.smart.p4": "If you'd rather check for yourself, every version publishes a <b>.sha256</b> file next to the installer with its fingerprint, so you can confirm that what you downloaded is what was published.",
+  "saber.smart.p2": "Why both times: signing an application costs a few hundred euros a year, and Hermes isn't signed yet. These warnings aren't saying the program is dangerous; they're saying nobody has put their name behind it. And there's no way around them: shipping it in a .zip doesn't avoid the Windows one, and antivirus engines score an .exe inside a zip worse. The only thing that removes them is signing.",
+  "saber.smart.p4": "If you'd rather check for yourself, every release publishes a <b>.sha256</b> file next to the installer with its fingerprint, so you can confirm that what you downloaded is what was published.",
 
   "saber.drivers.t": "It installs two drivers, and they can be removed",
   "saber.drivers.p1": "Hermes needs two pieces that sit below the operating system, and the installer puts them there:",

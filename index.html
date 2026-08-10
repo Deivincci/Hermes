@@ -198,6 +198,17 @@
   </p>
   <p class="descarga-aviso"><a href="#saber" data-t="descarga.aviso"></a></p>
   <p class="descarga-nota" data-t="descarga.actualiza"></p>
+
+  <!-- EL QR. Lleva a ESTA PÁGINA, no al instalador: un .exe en un móvil no sirve de nada, y quien
+       escanea espera que algo pase. Se genera aquí mismo con qr.js; no se le pide a ningún servicio. -->
+  <aside class="qr">
+    <div class="qr-caja" id="qrCaja"></div>
+    <div class="qr-texto">
+      <h3 data-t="qr.titulo"></h3>
+      <p data-t="qr.p"></p>
+      <p class="qr-ojo" data-t="qr.ojo"></p>
+    </div>
+  </aside>
 </section>
 
 <!-- ============================ 5. ANTES DE INSTALAR ============================ -->
@@ -206,11 +217,23 @@
   <p class="seccion-sub" data-t="saber.sub"></p>
 
   <div class="avisos">
+    <!-- LOS DOS AVISOS VAN EN LA MISMA TARJETA Y EN ORDEN: primero el del navegador al DESCARGAR y
+         luego el de Windows al ABRIR. Tienen la misma causa —el fichero no está firmado— y se
+         encuentran uno detrás de otro en cuestión de segundos. Separarlos en dos tarjetas haría
+         pensar que son dos problemas distintos y que uno de los dos es más grave. -->
     <article class="aviso">
       <h3 data-t="saber.smart.t"></h3>
+      <p data-t="saber.smart.p0"></p>
+
+      <h4 data-t="saber.smart.h1"></h4>
+      <p data-t="saber.smart.d1"></p>
+      <p class="aviso-como" data-t-html="saber.smart.c1"></p>
+
+      <h4 data-t="saber.smart.h2"></h4>
       <p data-t="saber.smart.p1"></p>
-      <p data-t="saber.smart.p2"></p>
       <p class="aviso-como" data-t-html="saber.smart.p3"></p>
+
+      <p data-t="saber.smart.p2"></p>
       <p data-t-html="saber.smart.p4"></p>
     </article>
 
@@ -265,6 +288,7 @@
   </figure>
 </div>
 
+<script src="qr.js"></script>
 <script src="hermes.js"></script>
 </body>
 </html>

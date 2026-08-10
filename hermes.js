@@ -223,10 +223,39 @@
   }
 
   /* ---------------------------------------------------------------------------
+     EL QR. Se dibuja aquí, con qr.js, sin pedirle nada a nadie: un generador de
+     QR ajeno es una empresa de por medio que el día que cierre deja el hueco en
+     blanco y sin avisar.
+
+     La dirección va AQUÍ y en un solo sitio. Y apunta a la PÁGINA, no al .exe:
+     quien escanea lo hace con un móvil, y un instalador de Windows en un móvil
+     no es que falle, es que no significa nada.
+     --------------------------------------------------------------------------- */
+  var DIRECCION = "https://deivincci.github.io/Hermes/";
+
+  function montaQR() {
+    var caja = document.getElementById("qrCaja");
+    if (!caja) return;
+    try {
+      caja.innerHTML = global_HermesQR().svg(DIRECCION, T("qr.alt"));
+    } catch (e) {
+      // Si por lo que sea no se puede dibujar, se quita el bloque entero en vez
+      // de dejar un hueco con un rótulo que no lleva a ningún sitio.
+      var bloque = caja.closest ? caja.closest(".qr") : null;
+      if (bloque) bloque.hidden = true;
+    }
+  }
+  function global_HermesQR() {
+    if (!window.HermesQR) throw new Error("qr.js no está cargado");
+    return window.HermesQR;
+  }
+
+  /* ---------------------------------------------------------------------------
      Arranque.
      --------------------------------------------------------------------------- */
   montaSelector();
   montaVisor();
   montaBarra();
   cambiaIdioma(idiomaInicial(), false);
+  montaQR(); // después del idioma: el texto alternativo del QR también se traduce
 })();
