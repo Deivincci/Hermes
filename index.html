@@ -180,16 +180,22 @@
     <p data-t="descarga.p"></p>
   </div>
 
+  <!-- ENLACE DIRECTO Y PERMANENTE. /releases/latest/download/<nombre> exige el nombre EXACTO, y por eso
+       el instalador se publica sin la versión dentro: así este enlace no hay que tocarlo nunca más. -->
   <a class="boton boton-grande boton-descarga"
-     href="https://github.com/Deivincci/Hermes/releases/latest" rel="noopener">
+     href="https://github.com/Deivincci/Hermes/releases/latest/download/Hermes-Setup.exe" rel="noopener">
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
       <path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 19h16" fill="none" stroke="currentColor"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <span data-t="descarga.boton">Ir a las descargas</span>
+    <span data-t="descarga.boton">Descargar Hermes-Setup.exe</span>
   </a>
 
   <p class="descarga-fichero" data-t-html="descarga.fichero"></p>
+  <p class="descarga-todas">
+    <a href="https://github.com/Deivincci/Hermes/releases/latest" rel="noopener"
+       data-t="descarga.todas"></a>
+  </p>
   <p class="descarga-aviso"><a href="#saber" data-t="descarga.aviso"></a></p>
   <p class="descarga-nota" data-t="descarga.actualiza"></p>
 </section>

@@ -92,8 +92,9 @@ window.HERMES_TEXTOS.en = {
   /* ---------- 4. Download ---------- */
   "descarga.titulo": "Download Hermes",
   "descarga.p": "Windows 10 and 11, 64-bit. It's free and there's no signing up: there are no accounts.",
-  "descarga.boton": "Go to the downloads",
-  "descarga.fichero": "Look for the file <b>Hermes-Setup-X.Y.Z.exe</b>. That's the installer; there's nothing else.",
+  "descarga.boton": "Download Hermes-Setup.exe",
+  "descarga.fichero": "The button downloads <b>Hermes-Setup.exe</b> straight away: that's the installer, and it's the only thing you need.",
+  "descarga.todas": "See every release, its notes and the .sha256 file",
   "descarga.aviso": "Read the section below before you install. It's four things and none of them is fine print.",
   "descarga.actualiza": "Once installed, Hermes tells you when there's a new version and installs it if you say yes. It never downloads or installs anything on its own.",
 

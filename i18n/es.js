@@ -100,8 +100,9 @@ window.HERMES_TEXTOS.es = {
   /* ---------- 4. Descarga ---------- */
   "descarga.titulo": "Descargar Hermes",
   "descarga.p": "Windows 10 y 11 de 64 bits. Es gratis y no hay que registrarse: no existen las cuentas.",
-  "descarga.boton": "Ir a las descargas",
-  "descarga.fichero": "Busca el fichero <b>Hermes-Setup-X.Y.Z.exe</b>. Es el instalador; no hay más.",
+  "descarga.boton": "Descargar Hermes-Setup.exe",
+  "descarga.fichero": "El botón baja <b>Hermes-Setup.exe</b> directamente: es el instalador, y es lo único que hay que descargar.",
+  "descarga.todas": "Ver todas las versiones, las notas de cada una y el fichero .sha256",
   "descarga.aviso": "Antes de instalar, lee lo de aquí abajo. Son cuatro cosas y ninguna es letra pequeña.",
   "descarga.actualiza": "Una vez instalado, Hermes te avisa cuando hay versión nueva y la instala si tú dices que sí. Nunca descarga ni instala nada por su cuenta.",
 

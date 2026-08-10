@@ -297,6 +297,10 @@ a:focus-visible, button:focus-visible {
   background: var(--card); border: 1px solid var(--line); border-radius: 6px;
   padding: 2px 7px;
 }
+.descarga-todas { margin: 0 0 26px; }
+.descarga-todas a { color: var(--muted); font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--line); }
+.descarga-todas a:hover { color: var(--fg); border-bottom-color: var(--accent-line); }
+
 .descarga-aviso { margin: 0 0 14px; }
 .descarga-aviso a {
   display: inline-block;

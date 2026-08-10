@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://deivincci.github.io/Hermes/"><b>Website</b></a> ·
-  <a href="https://github.com/Deivincci/Hermes/releases/latest"><b>Download</b></a>
+  <a href="https://github.com/Deivincci/Hermes/releases/latest/download/Hermes-Setup.exe"><b>Download</b></a>
 </p>
 
 ---
@@ -53,10 +53,13 @@ plugged in. You can invite up to three people: P2, P3 and P4.
 
 ## Download
 
-**[Get the latest release →](https://github.com/Deivincci/Hermes/releases/latest)**
+**[Download Hermes-Setup.exe →](https://github.com/Deivincci/Hermes/releases/latest/download/Hermes-Setup.exe)**
 
-Windows 10 and 11, 64-bit. Look for **`Hermes-Setup-X.Y.Z.exe`** — that's the installer, there's
-nothing else. It's free and there's no signing up: there are no accounts.
+Windows 10 and 11, 64-bit. That link always points at the newest version. It's free and there's no
+signing up: there are no accounts.
+
+For the release notes, older versions and the `.sha256` file, see
+[all releases](https://github.com/Deivincci/Hermes/releases/latest).
 
 Once installed, Hermes tells you when there's a new version and installs it if you say yes. It never
 downloads or installs anything on its own.

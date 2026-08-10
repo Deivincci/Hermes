@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://deivincci.github.io/Hermes/?lang=es"><b>Página web</b></a> ·
-  <a href="https://github.com/Deivincci/Hermes/releases/latest"><b>Descargar</b></a>
+  <a href="https://github.com/Deivincci/Hermes/releases/latest/download/Hermes-Setup.exe"><b>Descargar</b></a>
 </p>
 
 ---
@@ -53,10 +53,13 @@ hasta a tres personas: P2, P3 y P4.
 
 ## Descargar
 
-**[Ir a la última versión →](https://github.com/Deivincci/Hermes/releases/latest)**
+**[Descargar Hermes-Setup.exe →](https://github.com/Deivincci/Hermes/releases/latest/download/Hermes-Setup.exe)**
 
-Windows 10 y 11 de 64 bits. Busca el fichero **`Hermes-Setup-X.Y.Z.exe`**: es el instalador, no hay
-más. Es gratis y no hay que registrarse: no existen las cuentas.
+Windows 10 y 11 de 64 bits. Ese enlace apunta siempre a la versión más reciente. Es gratis y no hay
+que registrarse: no existen las cuentas.
+
+Para las notas de cada versión, las anteriores y el fichero `.sha256`, mira
+[todas las publicaciones](https://github.com/Deivincci/Hermes/releases/latest).
 
 Una vez instalado, Hermes te avisa cuando hay versión nueva y la instala si tú dices que sí. Nunca
 descarga ni instala nada por su cuenta.
