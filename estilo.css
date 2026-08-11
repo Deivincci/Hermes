@@ -324,9 +324,18 @@ a:focus-visible, button:focus-visible {
 /* El QR se imprime SOBRE BLANCO siempre. Un código en negativo (claro sobre
    oscuro) lo leen bastantes menos lectores, y aquí el fondo de la página es
    oscuro: sin este recuadro blanco, el codigo escanearia mal en medio movil. */
+/* EL TAMANO NO ES ESTETICO: DECIDE SI SE PUEDE LEER.
+   El codigo tiene 29 modulos y la zona tranquila anade 4 a cada lado: 37 en total. A 150 px con 6 de
+   relleno salian 138/37 = 3,73 px por modulo — FRACCIONARIO. Con shape-rendering crispEdges cada
+   modulo se redondea a 3 o a 4 px de forma irregular, asi que la rejilla que ve el lector deja de ser
+   uniforme; y el codigo util quedaba en 108 px porque el margen se comia el 22%.
+   222 = 37 x 6 EXACTOS: seis pixeles por modulo, todos iguales, y el codigo util pasa de 108 a 174 px.
+   Si algun dia se cambia este numero, que siga siendo multiplo de 37.
+   Y sin padding: la zona tranquila YA VA DENTRO del SVG (es parte de la norma). El relleno de la caja
+   era un segundo margen encima del primero — el "mucho margen alrededor" que se veia. */
 .qr-caja {
-  flex: 0 0 auto; width: 150px; height: 150px;
-  background: #fff; border-radius: 8px; padding: 6px;
+  flex: 0 0 auto; width: 222px; height: 222px;
+  background: #fff; border-radius: 8px; padding: 0;
 }
 .qr-caja svg { width: 100%; height: 100%; display: block; }
 .qr-texto h3 { font-size: 17px; margin-bottom: 8px; }
