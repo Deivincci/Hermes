@@ -200,9 +200,16 @@
   <p class="descarga-nota" data-t="descarga.actualiza"></p>
 
   <!-- EL QR. Lleva a ESTA PÁGINA, no al instalador: un .exe en un móvil no sirve de nada, y quien
-       escanea espera que algo pase. Se genera aquí mismo con qr.js; no se le pide a ningún servicio. -->
+       escanea espera que algo pase. Es una IMAGEN estática: ver docs/web.md, «El QR». -->
   <aside class="qr">
-    <div class="qr-caja" id="qrCaja"></div>
+    <!-- IMAGEN ESTATICA, no generada. Nuestro generador estaba CORRECTO —el lector propio decodifica
+         la matriz de un generador ajeno, el pintado sale exacto al pixel y la Reed-Solomon valida— y
+         aun asi el telefono no enganchaba. Tres intentos (tamano de modulo, escalado de Windows,
+         mascara) y ninguno lo arreglo. La direccion no va a cambiar nunca, asi que una imagen no
+         tiene coste de mantenimiento ninguno. Ver docs/web.md. -->
+    <div class="qr-caja">
+      <img src="assets/qr-code.png" width="1148" height="1148" data-t-attr="alt:qr.alt" alt="">
+    </div>
     <div class="qr-texto">
       <h3 data-t="qr.titulo"></h3>
       <p data-t="qr.p"></p>
@@ -288,7 +295,6 @@
   </figure>
 </div>
 
-<script src="qr.js"></script>
 <script src="hermes.js"></script>
 </body>
 </html>

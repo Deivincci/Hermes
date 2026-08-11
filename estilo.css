@@ -324,23 +324,18 @@ a:focus-visible, button:focus-visible {
 /* El QR se imprime SOBRE BLANCO siempre. Un código en negativo (claro sobre
    oscuro) lo leen bastantes menos lectores, y aquí el fondo de la página es
    oscuro: sin este recuadro blanco, el codigo escanearia mal en medio movil. */
-/* EL TAMANO NO ES ESTETICO: DECIDE SI SE PUEDE LEER. Y no basta con que salga entero en CSS.
-   Historia medida, en dos pasos:
-   (1) 150 px con 6 de relleno = 138/37 = 3,73 px por modulo, FRACCIONARIO. Con crispEdges cada modulo
-       se redondeaba a 3 o 4 px de forma irregular y la rejilla dejaba de ser uniforme.
-   (2) 222 = 37 x 6 arreglo el CSS... pero no la PANTALLA. Windows escala al 125% en casi todos los
-       portatiles, y 6 x 1,25 = 7,5 pixeles de dispositivo por modulo: fraccionario OTRA VEZ, ahora un
-       piso mas abajo. Medido con --force-device-scale-factor: 100% y 150% salian enteros, 125% no.
-   Por eso ahora son OCHO px de CSS por modulo (37 x 8 = 296). Los escalados de Windows van de 25 en
-   25 (100/125/150/175/200), y 8 por cualquiera de ellos da entero: 10, 12, 14, 16. La regla, para
-   quien toque esto: px por modulo MULTIPLO DE 4, y el lado = 37 x ese numero.
-   El codigo util pasa de 174 a 232 px de CSS (290 reales al 125%).
-   Sin padding: la zona tranquila YA VA DENTRO del SVG, y el relleno era un segundo margen. */
+/* CAMPO BLANCO ALREDEDOR, y no es estetica.
+   La imagen trae un marco OSCURO propio de 2 modulos (medido: 56 px de 28), y un QR necesita que lo
+   que le rodea sea CLARO. Ademas esta pagina es oscura y la camara del movil ajusta la exposicion a
+   TODA la escena, asi que un codigo rodeado de negro llega al sensor con menos contraste real del que
+   tiene en pixeles. El relleno de la tarjeta pone ese blanco, y no cuesta nada.
+   La imagen es version 5: 37 modulos a 28 px mas su marco — 41 anchos de modulo en 1148 px. */
 .qr-caja {
-  flex: 0 0 auto; width: 296px; height: 296px;
-  background: #fff; border-radius: 8px; padding: 0;
+  flex: 0 0 auto;
+  background: #fff; border-radius: 8px; padding: 28px;
+  line-height: 0;
 }
-.qr-caja svg { width: 100%; height: 100%; display: block; }
+.qr-caja img { display: block; width: 296px; height: 296px; } /* 296/41 = 7,2 px por modulo */
 .qr-texto h3 { font-size: 17px; margin-bottom: 8px; }
 .qr-texto p { margin: 0 0 9px; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
 .qr-ojo { font-size: 13.5px !important; opacity: .8; }
@@ -437,7 +432,8 @@ a:focus-visible, button:focus-visible {
   .mando { padding: 26px 18px 22px; }
   /* En estrecho solo tiene que CABER: nadie escanea la pantalla en la que ya esta
      mirando la pagina. 222 = 37 x 6, que entra en un movil de 320 px. */
-  .qr-caja { width: 222px; height: 222px; }
+  .qr-caja { padding: 14px; }
+  .qr-caja img { width: 222px; height: 222px; }
   .qr { flex-direction: column; text-align: center; gap: 18px; }
   .qr-texto p { text-align: left; }
   .visor { padding: 60px 12px 20px; }
