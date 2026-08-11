@@ -334,6 +334,21 @@
     var cw = codewordsDe(texto, info);
     var lado = ladoDe(info.v);
 
+    // LA MASCARA NO SE ELIGE SOLO POR PUNTOS, Y ESTO ESTA MEDIDO.
+    //
+    // La norma dice que gana la de menor penalizacion, y eso es lo que hacia. Pero un QR de esta misma
+    // direccion generado fuera se leia AL INSTANTE mientras el nuestro costaba un minuto — con la
+    // matriz correcta, la lectura correcta y el pintado exacto al pixel. Se comprobaron las tres cosas
+    // comparando modulo a modulo contra esa referencia: lo unico distinto era la mascara (nosotros la
+    // 4, la referencia la 2). Y por las reglas de la norma la NUESTRA puntuaba mejor: 593 contra 722.
+    //
+    // O sea que la penalizacion de la norma no predice lo que de verdad le cuesta a un lector real
+    // ENGANCHAR el codigo. La 4 es (i/2 + j/3) % 2: hace bloques grandes y macizos, y estimar la
+    // rejilla sobre manchas grandes es mas dificil aunque el codigo sea impecable.
+    //
+    // Asi que se prefiere la 2 cuando existe, y si no se cae a la de menos puntos. Es UN dato empirico
+    // de UN telefono, y esta escrito aqui para que se pueda deshacer sabiendo lo que se deshace.
+    var PREFERIDA = 2;
     var mejor = null, mejorPuntos = Infinity;
     for (var mk = 0; mk < 8; mk++) {
       var M = nuevaMatriz(lado);
@@ -347,6 +362,7 @@
       }
       ponFormato(M, EC_M, mk);
       var p = penaliza(M.m, lado);
+      if (mk === PREFERIDA) { p = -1; } // gana siempre que se pueda construir
       if (p < mejorPuntos) { mejorPuntos = p; mejor = M; }
     }
     // `fijo` sale fuera para poder COMPROBARLO: el número de módulos libres de
