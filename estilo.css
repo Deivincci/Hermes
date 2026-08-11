@@ -324,18 +324,20 @@ a:focus-visible, button:focus-visible {
 /* El QR se imprime SOBRE BLANCO siempre. Un código en negativo (claro sobre
    oscuro) lo leen bastantes menos lectores, y aquí el fondo de la página es
    oscuro: sin este recuadro blanco, el codigo escanearia mal en medio movil. */
-/* CAMPO BLANCO ALREDEDOR, y no es estetica.
-   La imagen trae un marco OSCURO propio de 2 modulos (medido: 56 px de 28), y un QR necesita que lo
-   que le rodea sea CLARO. Ademas esta pagina es oscura y la camara del movil ajusta la exposicion a
-   TODA la escena, asi que un codigo rodeado de negro llega al sensor con menos contraste real del que
-   tiene en pixeles. El relleno de la tarjeta pone ese blanco, y no cuesta nada.
-   La imagen es version 5: 37 modulos a 28 px mas su marco — 41 anchos de modulo en 1148 px. */
+/* SIN PARCHE BLANCO DETRAS, y esto se midio despues de equivocarme.
+   El PNG esta INVERTIDO: los modulos oscuros son los amarillos y el negro es el CLARO — se ve en el
+   localizador, que sale anillo-182 / anillo-0 / centro-182, el patron de la norma con esa polaridad.
+   Asi que el marco negro no es un borde decorativo: ES la zona tranquila, y ya viene dentro de la
+   imagen. Yo habia leido la polaridad al reves y por eso le puse un campo blanco que no hacia falta.
+   Y hay contraejemplo medido: el mismo PNG en el escritorio de Windows, sobre un fondo MAS oscuro que
+   esta pagina y en una miniatura de unos 100 px —cuatro veces mas pequena que aqui— se engancha al
+   instante. Ni el fondo oscuro ni el tamano son un problema con esta imagen.
+   Sin fondo y sin redondeo: un border-radius se comeria las esquinas de la zona tranquila. */
 .qr-caja {
   flex: 0 0 auto;
-  background: #fff; border-radius: 8px; padding: 28px;
   line-height: 0;
 }
-.qr-caja img { display: block; width: 296px; height: 296px; } /* 296/41 = 7,2 px por modulo */
+.qr-caja img { display: block; width: 296px; height: 296px; }
 .qr-texto h3 { font-size: 17px; margin-bottom: 8px; }
 .qr-texto p { margin: 0 0 9px; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
 .qr-ojo { font-size: 13.5px !important; opacity: .8; }
@@ -432,7 +434,6 @@ a:focus-visible, button:focus-visible {
   .mando { padding: 26px 18px 22px; }
   /* En estrecho solo tiene que CABER: nadie escanea la pantalla en la que ya esta
      mirando la pagina. 222 = 37 x 6, que entra en un movil de 320 px. */
-  .qr-caja { padding: 14px; }
   .qr-caja img { width: 222px; height: 222px; }
   .qr { flex-direction: column; text-align: center; gap: 18px; }
   .qr-texto p { text-align: left; }
