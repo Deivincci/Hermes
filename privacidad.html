@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad · Hermes</title>
+<meta name="description" content="Qué datos maneja Hermes, dónde se guardan, cuánto duran y qué viaja cifrado. Sin rodeos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tinta:#08161B;
+    --panel:#0F242C;
+    --panel-alto:#143039;
+    --linea:#1D3D48;
+    --texto:#DFEAED;
+    --apagado:#8AA3AC;
+    --turquesa:#5CC9D8;
+    --ambar:#D9A441;
+    --rojo:#E0685C;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --cuerpo:"Source Serif 4",Georgia,serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--tinta);color:var(--texto);
+    font-family:var(--cuerpo);font-size:1.02rem;line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+  .envoltorio{max-width:56rem;margin:0 auto;padding:0 1.5rem}
+
+  /* ---- cabecera ---- */
+  header{border-bottom:1px solid var(--linea);padding:4.5rem 0 3rem}
+  .marca{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--turquesa);margin:0 0 1.6rem
+  }
+  h1{
+    font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,6vw,3.9rem);
+    line-height:1.04;letter-spacing:-.025em;margin:0 0 1.2rem
+  }
+  .entradilla{font-size:1.15rem;color:var(--apagado);max-width:42rem;margin:0}
+  .fechas{
+    font-family:var(--mono);font-size:.74rem;color:var(--apagado);
+    margin-top:2.2rem;letter-spacing:.04em
+  }
+
+  /* ---- índice ---- */
+  nav{padding:2.5rem 0;border-bottom:1px solid var(--linea)}
+  nav ol{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.35rem 2rem
+  }
+  nav a{
+    font-family:var(--display);font-size:.95rem;color:var(--apagado);
+    text-decoration:none;display:block;padding:.3rem 0
+  }
+  nav a:hover,nav a:focus-visible{color:var(--turquesa)}
+  nav .num{font-family:var(--mono);font-size:.7rem;color:var(--linea);margin-right:.6rem}
+
+  /* ---- secciones ---- */
+  section{padding:3.4rem 0;border-bottom:1px solid var(--linea)}
+  h2{
+    font-family:var(--display);font-weight:700;font-size:1.7rem;
+    letter-spacing:-.015em;margin:0 0 1.4rem;scroll-margin-top:1.5rem
+  }
+  h2 .num{font-family:var(--mono);font-size:.75rem;color:var(--turquesa);display:block;margin-bottom:.5rem;letter-spacing:.15em}
+  h3{font-family:var(--display);font-weight:600;font-size:1.12rem;margin:2.2rem 0 .7rem;color:var(--texto)}
+  p{margin:0 0 1.1rem}
+  a{color:var(--turquesa)}
+  ul{margin:0 0 1.2rem;padding-left:1.2rem}
+  li{margin-bottom:.5rem}
+  code{font-family:var(--mono);font-size:.86em;background:var(--panel);padding:.12em .4em;border-radius:3px;color:var(--ambar)}
+
+  /* ---- fichas de dato ---- */
+  .ficha{
+    background:var(--panel);border:1px solid var(--linea);
+    border-left:3px solid var(--turquesa);
+    padding:1.3rem 1.5rem;margin:0 0 1rem;border-radius:4px
+  }
+  .ficha.sale{border-left-color:var(--ambar)}
+  .ficha h4{
+    font-family:var(--display);font-size:1rem;font-weight:600;margin:0 0 .5rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem
+  }
+  .etiqueta{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:.2em .6em;border-radius:2px;font-weight:600
+  }
+  .queda{background:rgba(92,201,216,.14);color:var(--turquesa)}
+  .viaja{background:rgba(217,164,65,.14);color:var(--ambar)}
+  .ficha p{margin:0;font-size:.96rem;color:var(--apagado)}
+  .ficha p + p{margin-top:.6rem}
+
+  /* ---- tabla ---- */
+  .tabla{width:100%;border-collapse:collapse;margin:1.2rem 0 1.4rem;font-size:.95rem}
+  .tabla th{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--apagado);text-align:left;padding:.6rem .9rem;border-bottom:1px solid var(--linea);font-weight:600
+  }
+  .tabla td{padding:.7rem .9rem;border-bottom:1px solid var(--linea);vertical-align:top}
+  .tabla tr:last-child td{border-bottom:none}
+  .si{color:var(--turquesa);font-family:var(--mono);font-size:.82rem}
+  .no{color:var(--ambar);font-family:var(--mono);font-size:.82rem}
+
+  /* ---- aviso ---- */
+  .aviso{
+    background:var(--panel-alto);border:1px solid var(--linea);
+    border-left:3px solid var(--ambar);padding:1.3rem 1.5rem;border-radius:4px;margin:1.4rem 0
+  }
+  .aviso p:last-child{margin-bottom:0}
+  .aviso strong{color:var(--ambar);font-weight:600}
+
+  footer{padding:3rem 0 5rem;color:var(--apagado);font-size:.92rem}
+  footer a{color:var(--turquesa)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="envoltorio">
+    <p class="marca">Hermes · Deivincci</p>
+    <h1>Privacidad</h1>
+    <p class="entradilla">Qué datos maneja Hermes, dónde acaban, cuánto duran y qué viaja cifrado. Escrito mirando el código, no de memoria.</p>
+    <p class="fechas">Vigente desde el 16 de agosto de 2026 · Aplica a Hermes v0.9.6 y posteriores</p>
+  </div>
+</header>
+
+<nav>
+  <div class="envoltorio">
+    <ol>
+      <li><a href="#responsable"><span class="num">01</span>Quién responde</a></li>
+      <li><a href="#resumen"><span class="num">02</span>Resumen en diez líneas</a></li>
+      <li><a href="#identidad"><span class="num">03</span>Tu identidad en Hermes</a></li>
+      <li><a href="#equipo"><span class="num">04</span>Lo que se guarda en tu equipo</a></li>
+      <li><a href="#servidor"><span class="num">05</span>Lo que ve el servidor</a></li>
+      <li><a href="#fallos"><span class="num">06</span>El botón de informar de un fallo</a></li>
+      <li><a href="#cifrado"><span class="num">07</span>Qué viaja cifrado y qué no</a></li>
+      <li><a href="#terceros"><span class="num">08</span>Terceros</a></li>
+      <li><a href="#plazos"><span class="num">09</span>Cuánto se conserva</a></li>
+      <li><a href="#derechos"><span class="num">10</span>Tus derechos</a></li>
+      <li><a href="#menores"><span class="num">11</span>Menores</a></li>
+      <li><a href="#cambios"><span class="num">12</span>Cambios</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<section id="responsable">
+  <div class="envoltorio">
+    <h2><span class="num">01</span>Quién responde</h2>
+    <p>Hermes lo desarrolla <strong>David Moral Peláez</strong>, persona física, en Barcelona (España). No hay empresa detrás ni inversores. Para cualquier cuestión sobre privacidad: <a href="mailto:david.system80@gmail.com">david.system80@gmail.com</a>.</p>
+    <p>Hermes es gratuito. No hay publicidad, ni analítica, ni telemetría automática, ni venta de datos a nadie. Esto no es una promesa comercial: es que no existe el código que haría eso.</p>
+  </div>
+</section>
+
+<section id="resumen">
+  <div class="envoltorio">
+    <h2><span class="num">02</span>Resumen en diez líneas</h2>
+    <ul>
+      <li>No hay cuentas, ni contraseñas, ni correo electrónico. No te registras.</li>
+      <li>Hermes crea un identificador permanente en tu equipo la primera vez que arranca.</li>
+      <li>Ese identificador viaja al servidor de encuentro para poder ponerte en contacto con otros.</li>
+      <li>El chat, la voz, el vídeo, los archivos y la pantalla van <em>directos</em> entre vosotros, no pasan por ningún servidor.</li>
+      <li>El servidor de encuentro no guarda nada en disco: lo que sabe de ti vive en memoria y caduca en segundos.</li>
+      <li>Solo se envía un informe de fallo si tú pulsas el botón, y se conserva 30 días.</li>
+      <li>Ese informe lleva un registro de la aplicación con las IP públicas y los identificadores tachados.</li>
+      <li>Lo que guarda Hermes en tu equipo no sale de ahí, salvo el registro si envías un informe.</li>
+      <li>Hay una parte que <strong>no va cifrada</strong>: el diálogo con el servidor de encuentro. Está explicado abajo sin adornos.</li>
+      <li>Para borrarlo todo: desinstala y elimina la carpeta <code>%APPDATA%\Hermes</code>.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="identidad">
+  <div class="envoltorio">
+    <h2><span class="num">03</span>Tu identidad en Hermes</h2>
+    <p>La primera vez que abres Hermes se genera un par de claves criptográficas con un generador aleatorio. La parte pública de esas claves es tu <strong>identificador permanente</strong>, y es lo que te distingue de los demás en la red.</p>
+    <p>Ese identificador <strong>no se deriva de nada de tu equipo</strong>: ni del número de serie del disco, ni de la dirección física de la tarjeta de red, ni del nombre del ordenador. Es aleatorio.</p>
+    <div class="aviso">
+      <p><strong>Es permanente y sobrevive a reinstalar.</strong> Al desinstalar, Hermes te pregunta si quieres borrar tus datos y la opción marcada por defecto es <em>No</em>, para que puedas reinstalar sin perder tus amigos. Si eliges <em>No</em>, tu identidad y tu lista de amigos se conservan en el equipo. Para empezar de cero, elige <em>Sí</em> o borra la carpeta a mano.</p>
+    </div>
+    <p>El nick que eliges es texto libre y lo pones tú. Puede ser lo que quieras: no se comprueba, no se verifica y no tiene por qué ser tu nombre.</p>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="envoltorio">
+    <h2><span class="num">04</span>Lo que se guarda en tu equipo</h2>
+    <p>Todo vive en <code>%APPDATA%\Hermes</code>. Nada de esto se envía a ningún sitio, con una única excepción marcada abajo.</p>
+
+    <div class="ficha">
+      <h4>Tus claves <span class="etiqueta queda">no sale</span></h4>
+      <p>El par de claves que forma tu identidad, incluida la parte privada. Quien tenga acceso a ese fichero puede hacerse pasar por ti.</p>
+    </div>
+
+    <div class="ficha">
+      <h4>Tu lista de amigos <span class="etiqueta queda">no sale</span></h4>
+      <p>Por cada amigo: el alias que le pusiste, su identificador y un secreto compartido de 32 bytes que se genera al aceptaros.</p>
+    </div>
+
+    <div class="ficha">
+      <h4>Tus grupos <span class="etiqueta queda">no sale</span></h4>
+      <p>El secreto del grupo y, por cada miembro, su identificador, su nick, su IP dentro de la red virtual y sus direcciones de red.</p>
+    </div>
+
+    <div class="ficha">
+      <h4>Ajustes y preferencias <span class="etiqueta queda">no sale</span></h4>
+      <p>Tu nick, la sala, los micrófonos y altavoces elegidos, el permiso de cámara, los silencios por persona, los volúmenes y las marcas de los juegos.</p>
+    </div>
+
+    <div class="ficha sale">
+      <h4>El registro de la aplicación <span class="etiqueta viaja">solo si lo envías</span></h4>
+      <p>Un fichero de texto con lo que Hermes va haciendo. Se vacía cada vez que abres la aplicación, y se conserva el de la sesión anterior.</p>
+      <p>Es el único fichero que puede salir de tu equipo, y únicamente si marcas la casilla al enviar un informe de fallo.</p>
+    </div>
+  </div>
+</section>
+
+<section id="servidor">
+  <div class="envoltorio">
+    <h2><span class="num">05</span>Lo que ve el servidor</h2>
+    <p>Hermes usa un servidor de encuentro para que dos personas detrás de routers distintos puedan encontrarse. Su único trabajo es hacer las presentaciones; después de eso, todo va directo entre vosotros.</p>
+    <p>Mientras estás conectado, el servidor conoce tu identificador, tu IP pública y puerto, tu IP dentro de la red virtual, tu nick, la sala en la que estás y si estás en un grupo.</p>
+    <p><strong>Nada de eso se escribe en disco.</strong> Vive en memoria y caduca solo: 30 segundos sin dar señales y tu entrada desaparece; 45 segundos para las suscripciones de presencia.</p>
+    <p>Los registros del sistema del servidor sí pueden anotar una IP pública en casos concretos —mensajes rechazados por tamaño o saludos mal formados—. Esos registros se conservan un máximo de 30 días.</p>
+  </div>
+</section>
+
+<section id="fallos">
+  <div class="envoltorio">
+    <h2><span class="num">06</span>El botón de informar de un fallo</h2>
+    <p>Hermes no envía nada por su cuenta. Solo se manda un informe cuando tú lo pides con el botón del bicho, escribes lo que ha pasado y le das a enviar.</p>
+
+    <h3>Qué se envía</h3>
+    <table class="tabla">
+      <tr><th>Dato</th><th>Qué es</th></tr>
+      <tr><td>Tu mensaje</td><td>Lo que escribes tú, hasta 8 KB</td></tr>
+      <tr><td>El registro</td><td><strong>Solo si marcas la casilla.</strong> Los últimos 256 KB, saneados</td></tr>
+      <tr><td>Versión</td><td>De Hermes y del protocolo</td></tr>
+      <tr><td>Sistema</td><td>Windows o Linux, arquitectura y versión del sistema</td></tr>
+      <tr><td>Tu identificador</td><td>Completo al enviarlo; <strong>recortado a 12 caracteres al guardarse</strong></td></tr>
+      <tr><td>Una firma</td><td>Para que nadie pueda enviar informes en tu nombre</td></tr>
+    </table>
+
+    <h3>Qué se tacha del registro antes de salir</h3>
+    <p>Antes de enviarse, el registro pasa por un saneador que sustituye las IP públicas —la tuya y las ajenas—, los identificadores completos y tu nombre de usuario de Windows en las rutas de fichero. El saneador vuelve a aplicarse en el servidor al guardar.</p>
+    <p>Lo que <strong>sí</strong> queda en el registro: las direcciones de la red privada virtual de Hermes, las direcciones de tu red local y un fragmento corto de identificador, todo ello a propósito, porque sin eso el informe no sirve para diagnosticar nada.</p>
+
+    <h3>Cómo viaja y dónde acaba</h3>
+    <p>Va cifrado con TLS contra un certificado fijado en la propia aplicación, no contra el almacén de confianza del sistema. Se guarda en el servidor en un fichero con permisos restringidos, del que <strong>no se registra tu IP</strong>, y se borra automáticamente a los 30 días.</p>
+  </div>
+</section>
+
+<section id="cifrado">
+  <div class="envoltorio">
+    <h2><span class="num">07</span>Qué viaja cifrado y qué no</h2>
+    <p>Todo lo que os intercambiáis va por la red virtual que monta Hermes, y esa red está cifrada con claves efímeras y autenticada. Cada función hereda ese cifrado.</p>
+
+    <table class="tabla">
+      <tr><th>Canal</th><th>Va directo entre vosotros</th><th>Cifrado</th></tr>
+      <tr><td>Chat de sala</td><td class="si">sí</td><td class="si">sí ¹</td></tr>
+      <tr><td>Chat de grupo</td><td class="si">sí</td><td class="si">sí</td></tr>
+      <tr><td>Voz</td><td class="si">sí</td><td class="si">sí</td></tr>
+      <tr><td>Vídeo (webcam)</td><td class="si">sí</td><td class="si">sí</td></tr>
+      <tr><td>Compartir pantalla</td><td class="si">sí</td><td class="si">sí</td></tr>
+      <tr><td>Archivos</td><td class="si">sí</td><td class="si">sí</td></tr>
+      <tr><td>Juegos y mando</td><td class="si">sí</td><td class="si">sí</td></tr>
+      <tr><td>Diálogo con el servidor</td><td class="no">no</td><td class="no">no ²</td></tr>
+    </table>
+
+    <div class="aviso">
+      <p><strong>¹ Las salas públicas comparten una clave que va dentro del instalador.</strong> Es la misma para todo el mundo. Eso significa que el contenido sigue cifrado frente a quien no tenga Hermes, pero <em>no</em> frente a alguien que lo tenga instalado y sepa lo que hace. Los grupos privados no tienen ese problema: usan un secreto propio que se genera al crearlos y solo se reparte por invitación.</p>
+      <p><strong>² El diálogo con el servidor de encuentro no va cifrado.</strong> Va firmado —nadie puede suplantarte ni alterar los mensajes— pero no es confidencial. Quien pueda observar el tráfico en el camino (una red wifi compartida, tu proveedor de internet, cualquier salto intermedio) puede ver tu identificador, tu nick, en qué sala estás y la lista de identificadores de amigos cuya presencia consultas. Con identificadores permanentes, eso permite correlacionar a lo largo del tiempo quién se relaciona con quién. Está previsto cifrarlo en una versión futura; hasta entonces, conviene que lo sepas.</p>
+    </div>
+  </div>
+</section>
+
+<section id="terceros">
+  <div class="envoltorio">
+    <h2><span class="num">08</span>Terceros</h2>
+    <p>Hermes contacta con dos sitios que no son míos, y con ninguno más.</p>
+
+    <h3>GitHub — para saber si hay versión nueva</h3>
+    <p>Una vez al día, Hermes pregunta a GitHub cuál es la última versión publicada. En esa consulta <strong>no se envía tu identificador, ni tu nick, ni nada que te identifique</strong>. GitHub ve lo inevitable en cualquier petición: tu IP pública y que la petición viene de Hermes. Al descargar una actualización, lo mismo.</p>
+
+    <h3>YouTube — solo si lo usas</h3>
+    <p>La función de ver vídeos sincronizados carga el reproductor de YouTube. Ese código no se carga hasta que abres la función por primera vez: <strong>si no usas el vídeo sincronizado, tu equipo nunca contacta con Google por culpa de Hermes.</strong> Cuando lo usas, se aplica lo de cualquier vídeo de YouTube incrustado: Google ve tu IP y puede poner cookies.</p>
+  </div>
+</section>
+
+<section id="plazos">
+  <div class="envoltorio">
+    <h2><span class="num">09</span>Cuánto se conserva</h2>
+    <table class="tabla">
+      <tr><th>Qué</th><th>Dónde</th><th>Cuánto</th></tr>
+      <tr><td>Tu identidad, amigos y ajustes</td><td>Tu equipo</td><td>Hasta que los borres</td></tr>
+      <tr><td>El registro de la aplicación</td><td>Tu equipo</td><td>Se vacía al abrir Hermes</td></tr>
+      <tr><td>Tu presencia en el servidor</td><td>Memoria del servidor</td><td>30 segundos sin señales</td></tr>
+      <tr><td>Informes de fallo</td><td>Servidor</td><td>30 días</td></tr>
+      <tr><td>Registros del sistema del servidor</td><td>Servidor</td><td>30 días</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="derechos">
+  <div class="envoltorio">
+    <h2><span class="num">10</span>Tus derechos</h2>
+    <p>Si estás en la Unión Europea, el Reglamento General de Protección de Datos te da derecho a acceder a tus datos, corregirlos, borrarlos, limitar su uso y oponerte al tratamiento.</p>
+
+    <h3>Borrarlo todo tú mismo, ahora</h3>
+    <p>Desinstala Hermes y, cuando pregunte si quieres borrar tus datos, elige <em>Sí</em>. O borra a mano la carpeta <code>%APPDATA%\Hermes</code>. Con eso desaparecen tu identidad, tus amigos, tus grupos, tus ajustes y el registro. No queda nada en tu equipo.</p>
+
+    <h3>Lo que está en el servidor</h3>
+    <p>Tu presencia se borra sola en segundos al cerrar Hermes. Los informes de fallo se borran solos a los 30 días; si quieres que se borre uno antes, escríbeme y dime cuándo lo enviaste.</p>
+
+    <p>Si crees que no estoy cumpliendo, puedes reclamar ante la <a href="https://www.aepd.es" rel="noopener">Agencia Española de Protección de Datos</a>.</p>
+  </div>
+</section>
+
+<section id="menores">
+  <div class="envoltorio">
+    <h2><span class="num">11</span>Menores</h2>
+    <p>Hermes no pide edad ni la comprueba, porque no pide ningún dato personal para funcionar. Las salas públicas son espacios abiertos con desconocidos: hay chat, voz y vídeo sin moderación. Si eres madre, padre o tutor, tenlo en cuenta antes de dejar que un menor lo use sin supervisión.</p>
+  </div>
+</section>
+
+<section id="cambios">
+  <div class="envoltorio">
+    <h2><span class="num">12</span>Cambios</h2>
+    <p>Hermes está en desarrollo activo y esta página cambiará con él. La fecha de arriba dice desde cuándo vale lo que estás leyendo y a qué versión se aplica. Si algo cambia de forma importante —datos nuevos, destinos nuevos, plazos distintos— lo diré en las notas de la versión, no solo aquí.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="envoltorio">
+    <p>Hermes · <a href="https://github.com/Deivincci/Hermes">github.com/Deivincci/Hermes</a> · <a href="mailto:david.system80@gmail.com">david.system80@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
