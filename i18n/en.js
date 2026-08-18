@@ -139,6 +139,7 @@ window.HERMES_TEXTOS.en = {
   "pie.hecho": "Hermes is made by one person, for the fun of it.",
   "pie.repo": "This repository publishes the downloads and this page. The source isn't public for now.",
   "pie.releases": "Downloads",
+  "pie.privacidad": "Privacy",
   "pie.arriba": "Back to top",
 
   /* ---------- Image viewer ---------- */

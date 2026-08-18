@@ -161,12 +161,13 @@
 
 <section id="resumen">
   <div class="envoltorio">
-    <h2><span class="num">02</span>Resumen en diez líneas</h2>
+    <h2><span class="num">02</span>Resumen en once líneas</h2>
     <ul>
       <li>No hay cuentas, ni contraseñas, ni correo electrónico. No te registras.</li>
       <li>Hermes crea un identificador permanente en tu equipo la primera vez que arranca.</li>
       <li>Ese identificador viaja al servidor de encuentro para poder ponerte en contacto con otros.</li>
       <li>El chat, la voz, el vídeo, los archivos y la pantalla van <em>directos</em> entre vosotros, no pasan por ningún servidor.</li>
+      <li>Todo va cifrado entre vosotros, pero <strong>no igual de bien en todas partes</strong>: lo que cambia no es la función, es dónde la usas. Una sala pública y tu grupo privado no protegen lo mismo.</li>
       <li>El servidor de encuentro no guarda nada en disco: lo que sabe de ti vive en memoria y caduca en segundos.</li>
       <li>Solo se envía un informe de fallo si tú pulsas el botón, y se conserva 30 días.</li>
       <li>Ese informe lleva un registro de la aplicación con las IP públicas y los identificadores tachados.</li>
@@ -260,23 +261,41 @@
 <section id="cifrado">
   <div class="envoltorio">
     <h2><span class="num">07</span>Qué viaja cifrado y qué no</h2>
-    <p>Todo lo que os intercambiáis va por la red virtual que monta Hermes, y esa red está cifrada con claves efímeras y autenticada. Cada función hereda ese cifrado.</p>
+    <p>Todo lo que os intercambiáis va directo entre vosotros, por una red virtual cifrada y autenticada. Ninguna función es una excepción: no hay nada que viaje en claro entre dos personas.</p>
 
+    <p><strong>Lo que cambia no es la función, es el sitio.</strong> La misma pantalla compartida está protegida de una manera si la compartes en una sala pública y de otra si la compartes dentro de un grupo privado. Por eso esto no va ordenado por «chat, voz, vídeo…», sino por dónde ocurre.</p>
+
+    <h3>En una sala pública</h3>
+    <p>Va cifrado, pero <strong>con una clave que viaja dentro del instalador y es la misma para todo el mundo</strong>. Eso protege frente a quien no tenga Hermes; <em>no</em> frente a alguien que lo tenga instalado y sepa lo que hace.</p>
     <table class="tabla">
-      <tr><th>Canal</th><th>Va directo entre vosotros</th><th>Cifrado</th></tr>
-      <tr><td>Chat de sala</td><td class="si">sí</td><td class="si">sí ¹</td></tr>
-      <tr><td>Chat de grupo</td><td class="si">sí</td><td class="si">sí</td></tr>
-      <tr><td>Voz</td><td class="si">sí</td><td class="si">sí</td></tr>
-      <tr><td>Vídeo (webcam)</td><td class="si">sí</td><td class="si">sí</td></tr>
-      <tr><td>Compartir pantalla</td><td class="si">sí</td><td class="si">sí</td></tr>
-      <tr><td>Archivos</td><td class="si">sí</td><td class="si">sí</td></tr>
-      <tr><td>Juegos y mando</td><td class="si">sí</td><td class="si">sí</td></tr>
-      <tr><td>Diálogo con el servidor</td><td class="no">no</td><td class="no">no ²</td></tr>
+      <tr><th>En la sala</th><th>Va directo entre vosotros</th><th>Cifrado</th></tr>
+      <tr><td>Chat de la sala</td><td class="si">sí</td><td class="si">sí, con la clave compartida</td></tr>
+      <tr><td>Compartir pantalla</td><td class="si">sí</td><td class="si">sí, con la clave compartida</td></tr>
+      <tr><td>Juegos y mando</td><td class="si">sí</td><td class="si">sí, con la clave compartida</td></tr>
+    </table>
+
+    <h3>En un grupo privado</h3>
+    <p>Va cifrado con <strong>un secreto propio de ese grupo</strong>, generado al crearlo y repartido solo por invitación. Nadie de fuera lo tiene, ni siquiera alguien con Hermes instalado.</p>
+    <table class="tabla">
+      <tr><th>En el grupo</th><th>Va directo entre vosotros</th><th>Cifrado</th></tr>
+      <tr><td>Chat del grupo</td><td class="si">sí</td><td class="si">sí, con el secreto del grupo</td></tr>
+      <tr><td>Voz</td><td class="si">sí</td><td class="si">sí, con el secreto del grupo</td></tr>
+      <tr><td>Vídeo (webcam)</td><td class="si">sí</td><td class="si">sí, con el secreto del grupo</td></tr>
+      <tr><td>Archivos</td><td class="si">sí</td><td class="si">sí, con el secreto del grupo</td></tr>
+      <tr><td>Compartir pantalla</td><td class="si">sí</td><td class="si">sí, con el secreto del grupo</td></tr>
+      <tr><td>Juegos y mando</td><td class="si">sí</td><td class="si">sí, con el secreto del grupo</td></tr>
+    </table>
+    <p class="entradilla">La voz, el vídeo y los archivos <strong>solo existen dentro de un grupo</strong>: no es una preferencia que puedas cambiar sin darte cuenta, en una sala esas funciones no están.</p>
+
+    <h3>Con el servidor de encuentro</h3>
+    <table class="tabla">
+      <tr><th>Con el servidor</th><th>Va directo entre vosotros</th><th>Cifrado</th></tr>
+      <tr><td>Presentaciones y presencia</td><td class="no">no</td><td class="no">no ¹</td></tr>
     </table>
 
     <div class="aviso">
-      <p><strong>¹ Las salas públicas comparten una clave que va dentro del instalador.</strong> Es la misma para todo el mundo. Eso significa que el contenido sigue cifrado frente a quien no tenga Hermes, pero <em>no</em> frente a alguien que lo tenga instalado y sepa lo que hace. Los grupos privados no tienen ese problema: usan un secreto propio que se genera al crearlos y solo se reparte por invitación.</p>
-      <p><strong>² El diálogo con el servidor de encuentro no va cifrado.</strong> Va firmado —nadie puede suplantarte ni alterar los mensajes— pero no es confidencial. Quien pueda observar el tráfico en el camino (una red wifi compartida, tu proveedor de internet, cualquier salto intermedio) puede ver tu identificador, tu nick, en qué sala estás y la lista de identificadores de amigos cuya presencia consultas. Con identificadores permanentes, eso permite correlacionar a lo largo del tiempo quién se relaciona con quién. Está previsto cifrarlo en una versión futura; hasta entonces, conviene que lo sepas.</p>
+      <p><strong>Cuidado con la pantalla y con los juegos:</strong> son las tres funciones que existen en los dos sitios, y por eso son las únicas cuya protección depende de dónde las uses. Compartir tu pantalla en una sala pública no está protegido igual que compartirla en tu grupo. Y el ámbito se fija <strong>en el momento de empezar</strong>: si empiezas a compartir en la sala y después entras en un grupo, lo que estás compartiendo sigue siendo de la sala.</p>
+      <p><strong>¹ El diálogo con el servidor de encuentro no va cifrado.</strong> Va firmado —nadie puede suplantarte ni alterar los mensajes— pero no es confidencial. Quien pueda observar el tráfico en el camino (una red wifi compartida, tu proveedor de internet, cualquier salto intermedio) puede ver tu identificador, tu nick, en qué sala estás y la lista de identificadores de amigos cuya presencia consultas. Con identificadores permanentes, eso permite correlacionar a lo largo del tiempo quién se relaciona con quién. Está previsto cifrarlo en una versión futura; hasta entonces, conviene que lo sepas.</p>
     </div>
   </div>
 </section>

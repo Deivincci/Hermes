@@ -147,6 +147,7 @@ window.HERMES_TEXTOS.es = {
   "pie.hecho": "Hermes lo hace una persona, por gusto.",
   "pie.repo": "Este repositorio publica las descargas y esta página. El código no es público por ahora.",
   "pie.releases": "Descargas",
+  "pie.privacidad": "Privacidad",
   "pie.arriba": "Volver arriba",
 
   /* ---------- Visor de imágenes ---------- */
